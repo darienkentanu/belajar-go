@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Learning html/template Functions</title>
+    </head>
+    <body>
+        <!-- scopenya main.Orang -->
+        <p>
+            {{html "<h2>Hello</h2>"}}
+        </p>
+        {{if eq .Name "Darien Kentanu"}}
+        <p>I'm D'Fall!</p>
+        {{else if ne .Name "Firman Hayyu"}}
+        <p>I'm neither D'Fall or Hippies </p>
+        {{end}}
+        <p>
+            {{.SayHello "Fitra" "halo darien"}}
+        </p>
+        <p>
+            {{printf "%s because I'm %s" "You know why?" "D'fall!"}}
+        </p>
+        <p>
+            Darien have many friends. {{len .Friends}} of them are:
+            {{index .Friends 0}},
+            {{index .Friends 1}},
+            {{index .Friends 2}}.
+        </p>
+        {{$cond1 := true}}
+        {{$cond2 := false}}
+
+        {{if or $cond1 $cond2}}
+        <p>Be the richest man</p>
+        {{end}}
+    </body>
+</html>
