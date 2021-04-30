@@ -49,6 +49,7 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 		}
 
 		fileLocation := filepath.Join(basePath, "files", part.FileName())
+		// create files
 		dst, err := os.Create(fileLocation)
 		if dst != nil {
 			defer dst.Close()
@@ -57,6 +58,7 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		// copy isi ke files
 		if _, err := io.Copy(dst, part); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
